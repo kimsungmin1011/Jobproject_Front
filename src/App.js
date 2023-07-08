@@ -65,6 +65,7 @@ function App() {
                     console.log('실패함')
                   })
               }}>더보기</button>
+
               <div className="row">
                 {shoes.map((a, i) => {
                   return <Card shoes={shoes[i]} i={i + 1} ></Card>
