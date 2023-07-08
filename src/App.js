@@ -3,7 +3,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Navbar, Container, Nav, Carousel } from 'react-bootstrap'
 import bg from './img/bg.png';
-import { createContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
 import data from './data.js';
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
 import Detail from './routes/Detail';
@@ -17,6 +17,19 @@ function App() {
 
   let [shoes, setShoes] = useState(data)
   let navigate = useNavigate();
+
+  useEffect(() => {
+    axios.get('https://codingapple1.github.io/shop/data2.json')
+      .then((결과) => {
+        console.log(결과.data);
+        let copy = [...shoes, ...결과.data];
+        setShoes(copy);
+      })
+      .catch(() => {
+        console.log('실패함');
+      });
+  }, []);
+
   return (
     <div className='App'>
 
@@ -36,35 +49,26 @@ function App() {
             <div className="main-bg">
               <Carousel>
                 <Carousel.Item interval={5000}>
-              <video muted autoPlay loop>
-                <source src={mainVideo} type="video/mp4" />
-              </video>
-              <div class="text fadein">
-                <p>당신의 땀이 결실을 맺을 수 있도록</p>
-                <h2>JOBDANKOOK</h2>
-              </div>
-              </Carousel.Item>
-              <Carousel.Item interval={5000}>
-              <video muted autoPlay loop>
-                <source src={netWork} type="video/mp4" />
-              </video>
-              <div class="text fadein">
-                <p>맞춤형 취업 컨설팅</p>
-              </div>
-              </Carousel.Item>
+                  <video muted autoPlay loop>
+                    <source src={mainVideo} type="video/mp4" />
+                  </video>
+                  <div class="text fadein">
+                    <p>당신의 땀이 결실을 맺을 수 있도록</p>
+                    <h2>JOBDANKOOK</h2>
+                  </div>
+                </Carousel.Item>
+                <Carousel.Item interval={5000}>
+                  <video muted autoPlay loop>
+                    <source src={netWork} type="video/mp4" />
+                  </video>
+                  <div class="text fadein">
+                    <p>맞춤형 취업 컨설팅</p>
+                  </div>
+                </Carousel.Item>
               </Carousel>
             </div>
             <div className="container">
-              <button onClick={() => {
-                axios.get('https://codingapple1.github.io/shop/data2.json').then((결과) => {
-                  console.log(결과.data)
-                  let copy = [...shoes, ...결과.data]
-                  setShoes(copy)
-                })
-                  .catch(() => {
-                    console.log('실패함')
-                  })
-              }}>더보기</button>
+
 
               <div className="row">
                 {shoes.map((a, i) => {
@@ -74,9 +78,15 @@ function App() {
             </div>
           </>
         } />
-        <Route path="/detail/:id" element={
-          <Detail shoes={shoes} />
-        } />
+        <Route path="/detail/:id" element={<Detail shoes={shoes} />}>
+          <Route path="write" element={<div>
+            <span>자소서 양식</span><br />
+            <textarea
+              name="contents"
+              cols="80"
+              rows="30"
+            ></textarea></div>} />
+        </Route>
 
         <Route path="/cart" element={<Cart />}></Route>
 
