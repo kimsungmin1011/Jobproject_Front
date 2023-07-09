@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { useParams, Outlet, useNavigate } from "react-router-dom";
 import { Nav } from 'react-bootstrap'
 import './../App.css';
-import shinHan from './../프디아_공고.png';
+import shinHan from './../img/프디아_공고.png';
 
 
 function Detail(props) {
@@ -30,12 +30,12 @@ function Detail(props) {
         <div className={`container start ${fade}`}>
             <div className="row">
                 <div className="col-md-6">
-                    <img src="https://blog.kakaocdn.net/dn/dg5fpM/btqwMdBY480/yBALyxESNGxdULrhjEW1L1/img.jpg" width="100%" />
+                    <img src={찾은상품.img} width="100%" />
                 </div>
                 <div className="col-md-6 mt-4">
                     <h4 className="pt-5">{찾은상품.title}</h4>
                     <p>{찾은상품.content}</p>
-                    <p>D-{찾은상품.price}</p>
+                    <p>D-{찾은상품.day}</p>
                     <button className="btn btn-danger" onClick={()=>{ navigate('write'); }}>지원하기</button>
                 </div>
             </div>
