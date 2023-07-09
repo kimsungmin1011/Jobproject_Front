@@ -1,3 +1,31 @@
+.col-md-4{
+  box-sizing: border-box;
+  display: inline-block;
+  border: 0.5px solid rgb(160, 160, 160);
+  border-radius: 20px 20px 20px 20px;
+  /* margin: 0.3px; */
+}
+
+.ply{
+  text-align: left;
+}
+
+textarea{
+  border: 0.5px solid rgb(160, 160, 160);
+  border-radius: 10px 10px 10px 10px;
+  text-align: left;
+  display: flex;
+  justify-content: left;
+}
+
+input{
+  border: 0.5px solid rgb(99, 99, 99);
+  border-radius: 10px 10px 10px 10px;
+  text-align: left;
+  display: flex;
+  justify-content: left;
+}
+
 .fadein{
   font-size: medium;
   position: relative;

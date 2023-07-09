@@ -79,13 +79,42 @@ function App() {
           </>
         } />
         <Route path="/detail/:id" element={<Detail shoes={shoes} />}>
-          <Route path="write" element={<div>
-            <span>자소서 양식</span><br />
-            <textarea
-              name="contents"
-              cols="80"
-              rows="30"
-            ></textarea></div>} />
+          <Route path="write" element={
+            <div>
+
+              <br/><br/><h4 className='ply'>기본 정보</h4>
+              <br /><p className='ply'>이름</p>
+              <input></input>
+
+              <br /><br /><p className='ply'>전화번호</p>
+              <input type='number'></input>
+
+              <br /><br /><p className='ply'>이메일</p>
+              <input type='email' placeholder="example@gmail.com"></input>
+
+              <br /><br /><h5 className='ply'>1. 삼성전자를 지원한 이유와 입사 후 회사에서 이루고 싶은 꿈을 기술하십시오.</h5>
+              <textarea
+                name="contents"
+                cols="115"
+                rows="15"
+              ></textarea>
+
+              <br /><br /><h5 className='ply'>2. 본인의 성장과정을 간략히 기술하되 현재의 자신에게 가장 큰 영향을 끼친 사건, 인물 등을 포함하여 기술하시기 바랍니다.</h5>
+              <textarea
+                name="contents"
+                cols="115"
+                rows="15"
+              ></textarea>
+
+              <br /><br /><h5 className='ply'>3. 최근 사회이슈 중 중요하다고 생각되는 한가지를 선택하고 이에 관한 자신의 견해를 기술해 주시기 바랍니다.</h5>
+              <textarea
+                name="contents"
+                cols="115"
+                rows="15"
+              ></textarea>
+
+            </div>} />
+
         </Route>
 
         <Route path="/cart" element={<Cart />}></Route>
@@ -104,7 +133,7 @@ function Card(props) {
   let navigate = useNavigate();
   return (
     <div className="col-md-4" onClick={() => { navigate(`/detail/${props.i - 1}`) }}>
-      <img src={'https://codingapple1.github.io/shop/shoes' + props.i + '.jpg'} width="80%" />
+      <img src={'https://codingapple1.github.io/shop/shoes' + props.i + '.jpg'} width="70%" />
       <h5>{props.shoes.title}</h5>
       <h4>{props.shoes.content}</h4>
       <p>D-{props.shoes.price}</p>
