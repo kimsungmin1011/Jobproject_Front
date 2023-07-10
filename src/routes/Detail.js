@@ -3,6 +3,7 @@ import { useParams, Outlet, useNavigate } from "react-router-dom";
 import { Nav } from 'react-bootstrap'
 import './../App.css';
 import shinHan from './../img/프디아_공고.png';
+import axios from 'axios';
 
 
 function Detail(props) {
@@ -14,6 +15,7 @@ function Detail(props) {
     let [탭, 탭변경] = useState(0)
     let [fade, setFade] = useState('')
     let navigate = useNavigate();
+
     
     useEffect(() => {
         setTimeout(() => { setFade('end') }, 100)
@@ -51,7 +53,7 @@ function Detail(props) {
                     <Nav.Link onClick={() => { 탭변경(2) }} eventKey="link2">기업정보</Nav.Link>
                 </Nav.Item>
             </Nav>
-            <TabContent 탭={탭} />
+            <TabContent 탭={탭} 찾은상품={찾은상품}/>
 
             <Outlet></Outlet>
         </div>
@@ -68,9 +70,27 @@ function TabContent(props) {
         }
     }, [props.탭]) //화면 부드럽게 하는 효과
 
+    const companyInfo = {
+        logo: "logo.jpg", // 기업 로고 이미지 파일 경로
+        name: "기업명",
+        type: "대기업", // 기업형태
+        website: "https://www.hyundai.com/" // 홈페이지 주소
+    };
+
+    const companyInfoDiv = (
+        <div className='companyInfo'>
+            <img src={props.찾은상품.img} alt={`${props.찾은상품.title} Logo`} />
+            <h2>{props.찾은상품.title}</h2>
+            <p>{companyInfo.type}</p>
+            <a href={companyInfo.website}>{companyInfo.website}</a>
+        </div>
+    );
+
+
+
     return (
         <div className={`start ${fade}`}>
-            {[<div><img src={shinHan} alt="My Image" /></div>, <div>내용1</div>, <div>내용2</div>][props.탭]}
+            {[<div><img src={shinHan} alt="My Image" /></div>, <div>내용1</div>, companyInfoDiv][props.탭]}
         </div>
     )
 }
