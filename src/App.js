@@ -39,16 +39,17 @@ function App() {
 
   const postApply = () => {
     axios.post('https://port-0-employmentservice-likelion-20zynm2mljud9i6q.sel4.cloudtype.app/api/apply', {
-      "name": name,
-      "gender": gender,
-      "birth": birth,
-      "phoneNo": phoneNo,
-      "residence": residence,
-      "careerYn": careerYn ? "Y" : "N",
-      "content1": content1,
-      "content2": content2,
-      "content3": content3,
-      "content4": content4
+      employId: employId,
+      name: name,
+      gender: gender,
+      birth: birth,
+      phoneNo: phoneNo,
+      residence: residence,
+      careerYn: careerYn ? "Y" : "N",
+      content1: content1,
+      content2: content2,
+      content3: content3,
+      content4: content4
     })
       .then(res => {
         console.log(res)
@@ -83,6 +84,9 @@ function App() {
   const handleExperienceChange = (event) => {
     setExperience(event.target.checked);
   };
+
+  const [employId, setEmployId] = useState('');
+
 
   const [content1, setContent1] = useState('');
   const [content2, setContent2] = useState('');
@@ -178,8 +182,10 @@ function App() {
             <div>
               <br /><br /><h1 className='ply'><strong>지원서 작성하기</strong></h1>
               <br /><br /><h4 className='ply'>기본 정보</h4>
+              <input onChange={e => setEmployId(e.target.value)} type='text' placeholder="Employ ID"></input>
               <br /><p className='ply'>이름</p>
               <input onChange={e => setName(e.target.value)} placeholder='예)홍길동'></input>
+
 
               <br /><br /><p className='ply'>성별</p>
               <select value={gender} onChange={handleGenderChange}>
@@ -238,12 +244,12 @@ function App() {
                 onChange={onContent3Change}
               ></textarea><br />
 
-              <br /><br /><h5 className='ply'>4. 하고싶은 말을 자유롭게 기술해 주시기 바랍니다.</h5><p className='ply'>글자수: {inputCount3}</p>
+              <br /><br /><h5 className='ply'>4. 하고싶은 말을 자유롭게 기술해 주시기 바랍니다.</h5><p className='ply'>글자수: {inputCount4}</p>
               <textarea
-                name="content3"
+                name="content4"
                 cols="115"
                 rows="15"
-                onChange={onContent3Change}
+                onChange={onContent4Change}
               ></textarea><br />
 
               <button className="btn btn-danger" onClick={() => postApply()}>제출하기</button>
