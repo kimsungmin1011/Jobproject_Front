@@ -2,7 +2,6 @@ import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Navbar, Container, Nav, Carousel } from 'react-bootstrap'
-import bg from './img/bg.png';
 import { createContext, useState, useEffect } from 'react';
 import data from './data.js';
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
@@ -12,6 +11,7 @@ import axios from 'axios'
 import Cart from './routes/Cart.js'
 import mainVideo from './mainvideo.mp4';
 import netWork from './Network.mp4';
+import dankook from './img/dankook.png';
 
 function App() {
 
@@ -48,6 +48,7 @@ function App() {
       <Navbar bg="light" expand="lg">
         <Container>
           <Navbar.Brand onClick={() => { navigate('/') }}><div class="txt">
+            <img src={dankook} width="30px" height="30px" />
             <span>J</span>
             <span>O</span>
             <span>B</span>
@@ -78,7 +79,7 @@ function App() {
                   <div class="text fadein">
                     <p>당신의 땀이 결실을 맺을 수 있도록</p>
                     <div class="stroke">
-                    <h2><strong>JOBDANKOOK</strong></h2>
+                      <h2><strong>JOBDANKOOK</strong></h2>
                     </div>
                   </div>
                 </Carousel.Item>
@@ -159,13 +160,27 @@ function App() {
 
 function Card(props) {
   let navigate = useNavigate();
+  const [isHovering, setIsHovering] = useState(false);
+
+  const handleMouseOver = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseOut = () => {
+    setIsHovering(false);
+  };
   return (
-    <div className="col-md-4" onClick={() => { navigate(`/detail/${props.i - 1}`) }}>
-      <img src={props.shoes.img} />
-      <h6 className='ply'>{props.shoes.title}</h6>
-      <h4 className='ply'>{props.shoes.content}</h4><br /><br />
-      <p className='ply1'>D-{props.shoes.day}</p>
-    </div>
+    <div className="col-md-3" onClick={() => { navigate(`/detail/${props.i - 1}`) }}>
+      <div
+        className={isHovering ? "grow" : ""}
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
+      >
+        <img src={props.shoes.img} />
+        <h6 className='ply'>{props.shoes.title}</h6>
+        <h4 className='ply'>{props.shoes.content}</h4><br /><br />
+        <p className='ply1'>D-{props.shoes.day}</p>
+      </div></div>
   )
 }
 export default App;
