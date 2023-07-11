@@ -291,7 +291,7 @@ function Card(props) {
         <img src={props.shoes.img} />
         <h6 className='ply'>{props.shoes.companyName}</h6>
         <h4 className='ply'>{props.shoes.title}</h4><br /><br />
-        <p className='ply1'>D-{props.shoes.expDate}</p>
+        <p className='ply1'>{props.shoes.expDate}까지</p>
       </div></div>
   )
 }
