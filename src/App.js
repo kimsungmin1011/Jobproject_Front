@@ -26,10 +26,10 @@ function App() {
   const [phoneNo, setphoneNo] = useState('')
 
   useEffect(() => {
-    axios.get('https://codingapple1.github.io/shop/data2.json')
+    axios.get('https://port-0-employmentservice-likelion-20zynm2mljud9i6q.sel4.cloudtype.app/api/employment')
       .then((결과) => {
-        console.log(결과.data);
-        let copy = [...shoes, ...결과.data];
+        console.log(결과.data.result);
+        let copy = [...shoes, ...결과.data.result];
         setShoes(copy);
       })
       .catch(() => {
@@ -289,9 +289,9 @@ function Card(props) {
         onMouseOut={handleMouseOut}
       >
         <img src={props.shoes.img} />
-        <h6 className='ply'>{props.shoes.title}</h6>
-        <h4 className='ply'>{props.shoes.content}</h4><br /><br />
-        <p className='ply1'>D-{props.shoes.day}</p>
+        <h6 className='ply'>{props.shoes.companyName}</h6>
+        <h4 className='ply'>{props.shoes.title}</h4><br /><br />
+        <p className='ply1'>D-{props.shoes.expDate}</p>
       </div></div>
   )
 }
