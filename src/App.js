@@ -39,17 +39,17 @@ function App() {
 
   const postApply = () => {
     axios.post('https://port-0-employmentservice-likelion-20zynm2mljud9i6q.sel4.cloudtype.app/api/apply', {
-      employId: employId,
-      name: name,
-      gender: gender,
-      birth: birth,
-      phoneNo: phoneNo,
-      residence: residence,
-      careerYn: careerYn ? "Y" : "N",
-      content1: content1,
-      content2: content2,
-      content3: content3,
-      content4: content4
+    "employId": employId,
+    "name": name,
+    "gender": gender,
+    "birth": birth,
+    "phoneNo": phoneNo,
+    "residence": residence,
+    "careerYn": careerYn ? "Y" : "N",
+    "content1": content1,
+    "content2": content2,
+    "content3": content3,
+    "content4": content4
     })
       .then(res => {
         console.log(res)
