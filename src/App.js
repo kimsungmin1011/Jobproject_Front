@@ -12,6 +12,8 @@ import Cart from './routes/Cart.js'
 import mainVideo from './mainvideo.mp4';
 import netWork from './Network.mp4';
 import dankook from './img/dankook.png';
+import { useSelector } from 'react-redux';
+
 
 function App() {
 
@@ -21,6 +23,8 @@ function App() {
   let [inputCount2, setInputCount2] = useState(0);
   let [inputCount3, setInputCount3] = useState(0);
   let [inputCount4, setInputCount4] = useState(0);
+  let [employeeId, setEmployeeId] = useState(0);
+
 
   const [name, setName] = useState('')
   const [phoneNo, setphoneNo] = useState('')
@@ -37,10 +41,9 @@ function App() {
       });
   }, []);
 
-  let { id } = parseInt(useParams());
   const postApply = () => {
     axios.post('https://port-0-employmentservice-likelion-20zynm2mljud9i6q.sel4.cloudtype.app/api/apply', {
-      "employId": 8,
+      "employId": employeeId,
       "name": name,
       "gender": gender,
       "birth": birth,
@@ -177,7 +180,7 @@ function App() {
             </div>
           </>
         } />
-        <Route path="/detail/:id" element={<Detail shoes={shoes} />}>
+        <Route path="/detail/:id" element={<Detail shoes={shoes} setEmployeeId={setEmployeeId} />}>
           <Route path="write" element={
             <div>
               <br /><br /><h1 className='ply'><strong>지원서 작성하기</strong></h1>

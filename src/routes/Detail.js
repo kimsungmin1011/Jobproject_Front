@@ -1,5 +1,7 @@
 import { useState, useEffect, useContext, createContext } from "react";
 import { useParams, Outlet, useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { setId } from './../store';
 import { Nav } from 'react-bootstrap'
 import './../App.css';
 import shinHan from './../img/프디아_공고.png';
@@ -11,6 +13,14 @@ function Detail(props) {
     let [num, setNum] = useState('')
     let [count, setCount] = useState(0)
     let { id } = useParams();
+
+    const dispatch = useDispatch();
+    props.setEmployeeId(id);
+
+    // useEffect를 이용하여 컴포넌트가 렌더링될 때 ID 값을 store에 저장합니다.
+    useEffect(() => {
+      dispatch(setId(id));
+    }, [id, dispatch]);
     
     let 찾은회사 = props.shoes.find((x) => x.employId - 1 == id);
     let [탭, 탭변경] = useState(0)

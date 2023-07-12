@@ -10,30 +10,23 @@ let id = createSlice({
   initialState : 1
 })
 
-let cart = createSlice({
-    name : 'cart',
-    initialState : [
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-    ]
-  })
+
+export const setId = (id) => ({
+  type: 'SET_ID',
+  id
+});
+
+export const idReducer = (state = '', action) => {
+  switch (action.type) {
+    case 'SET_ID':
+      return action.id;
+    default:
+      return state;
+  }
+};
 
 export default configureStore({
   reducer: { 
-    user : user.reducer,
-    cart : cart.reducer
+    id : id.reducer
   }
 }) 
