@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Navbar, Container, Nav, Carousel } from 'react-bootstrap'
 import { createContext, useState, useEffect } from 'react';
 import data from './data.js';
-import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
+import { Routes, Route, Link, useNavigate, Outlet, useParams } from 'react-router-dom'
 import Detail from './routes/Detail';
 import Event from './routes/Event';
 import axios from 'axios'
@@ -37,19 +37,20 @@ function App() {
       });
   }, []);
 
+  let { id } = parseInt(useParams());
   const postApply = () => {
     axios.post('https://port-0-employmentservice-likelion-20zynm2mljud9i6q.sel4.cloudtype.app/api/apply', {
-    "employId": employId,
-    "name": name,
-    "gender": gender,
-    "birth": birth,
-    "phoneNo": phoneNo,
-    "residence": residence,
-    "careerYn": careerYn ? "Y" : "N",
-    "content1": content1,
-    "content2": content2,
-    "content3": content3,
-    "content4": content4
+      "employId": id,
+      "name": name,
+      "gender": gender,
+      "birth": birth,
+      "phoneNo": phoneNo,
+      "residence": residence,
+      "careerYn": careerYn ? "Y" : "N",
+      "content1": content1,
+      "content2": content2,
+      "content3": content3,
+      "content4": content4
     })
       .then(res => {
         console.log(res)
@@ -84,8 +85,6 @@ function App() {
   const handleExperienceChange = (event) => {
     setExperience(event.target.checked);
   };
-
-  const [employId, setEmployId] = useState('');
 
 
   const [content1, setContent1] = useState('');
@@ -136,7 +135,7 @@ function App() {
           </div></Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link onClick={() => { navigate('/') }}>🏠홈</Nav.Link>
-            <Nav.Link onClick={() => { navigate('/detail/0') }}>📑이력서 관리</Nav.Link>
+            <Nav.Link onClick={() => { navigate('/event') }}>📑이력서 관리</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -183,7 +182,6 @@ function App() {
             <div>
               <br /><br /><h1 className='ply'><strong>지원서 작성하기</strong></h1>
               <br /><br /><h4 className='ply'>기본 정보</h4>
-              <input onChange={e => setEmployId(e.target.value)} type='text' placeholder="Employ ID"></input>
               <br /><p className='ply'>이름</p>
               <input onChange={e => setName(e.target.value)} placeholder='예)홍길동'></input>
 
@@ -205,9 +203,10 @@ function App() {
 
               <br /><br /><p className='ply'>생년월일</p>
               <input
-                type="date"
+                type="text"
                 value={birth}
                 onChange={handleBirthdateChange}
+                placeholder="YYYY-MM-DD"
               />
 
               <br /><br /><p className='ply'>경력 유무</p>
@@ -255,6 +254,7 @@ function App() {
 
               <button className="btn btn-danger" onClick={() => postApply()}>제출하기</button>
 
+
             </div>} />
 
         </Route>
@@ -293,6 +293,7 @@ function Card(props) {
         <h6 className='ply'>{props.shoes.companyName}</h6>
         <h4 className='ply'>{props.shoes.title}</h4><br /><br />
         <p className='ply1'>{props.shoes.expDate}까지</p>
+
       </div></div>
   )
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, createContext } from "react";
 import { useParams, Outlet, useNavigate } from "react-router-dom";
 import { Nav } from 'react-bootstrap'
 import './../App.css';
@@ -11,6 +11,7 @@ function Detail(props) {
     let [num, setNum] = useState('')
     let [count, setCount] = useState(0)
     let { id } = useParams();
+    
     let 찾은회사 = props.shoes.find((x) => x.employId - 1 == id);
     let [탭, 탭변경] = useState(0)
     let [fade, setFade] = useState('')
