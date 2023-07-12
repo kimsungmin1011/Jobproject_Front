@@ -124,7 +124,7 @@ function TabContent(props) {
                 </tr>
             </tbody>
         </table>
-        <img src={require(`./../img/${props.찾은회사.content}detail.png`)} alt="Shoes Image" style={{width: '50%', height: 'auto'}}/>
+        <img src={require(`./../img/${props.찾은회사.content}detail.png`)} alt="Shoes Image" style={{width: '80%', height: 'auto'}}/>
 
             </div>, <div><table className="job-table">
             <thead>
