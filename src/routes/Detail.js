@@ -94,7 +94,7 @@ function TabContent(props) {
             <p>기업규모: {props.찾은회사.corporateForm}</p>
             <p>사업분야: {props.찾은회사.industry}</p>
             <p>본사: {props.찾은회사.location}</p>
-            <a href={props.찾은회사.url}>{props.찾은회사.url}</a>
+            <a href={props.찾은회사.url.startsWith('http') ? props.찾은회사.url : `http://${props.찾은회사.url}`}>{props.찾은회사.url}</a>
         </div>
     );
 
@@ -123,7 +123,26 @@ function TabContent(props) {
                 </tr>
             </tbody>
         </table>
-            </div>, <div>내용1</div>, companyInfoDiv][props.탭]}
+            </div>, <div><table className="job-table">
+            <thead>
+                <tr>
+                    <th>채용분야</th>
+                    <th>고용형태</th>
+                    <th>스킬</th>
+                    <th>학력요건</th>
+                    <th>급여</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{props.찾은회사.title}</td>
+                    <td>{props.찾은회사.jobType}</td>
+                    <td>{props.찾은회사.skill}</td>
+                    <td>{props.찾은회사.education}</td>
+                    <td>{props.찾은회사.salary}</td>
+                </tr>
+            </tbody>
+        </table></div>, companyInfoDiv][props.탭]}
         </div>
     )
 }
