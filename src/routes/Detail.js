@@ -131,7 +131,7 @@ function TabContent(props) {
                 <tr>
                     <th>채용분야</th>
                     <th>고용형태</th>
-                    <th>스킬</th>
+                    <th>우대사항</th>
                     <th>학력요건</th>
                     <th>급여</th>
                 </tr>
