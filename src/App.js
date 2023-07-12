@@ -9,6 +9,7 @@ import Detail from './routes/Detail';
 import Event from './routes/Event';
 import axios from 'axios'
 import Cart from './routes/Cart.js'
+import News from './routes/news.js'
 import mainVideo from './mainvideo.mp4';
 import netWork from './Network.mp4';
 import dankook from './img/dankook.png';
@@ -140,6 +141,7 @@ function App() {
           <Nav className="me-auto">
             <Nav.Link onClick={() => { navigate('/') }}>🏠홈</Nav.Link>
             <Nav.Link onClick={() => { navigate('/event') }}>📑내 자소서 관리</Nav.Link>
+            <Nav.Link onClick={() => { navigate('/news') }}>🔍뉴스 검색</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -265,7 +267,7 @@ function App() {
 
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/event/:applyId" element={<ApplicationDetail />} />
-
+        <Route path="/news" element={<News />}></Route>
         <Route path="/event" element={<Event />}>
           <Route path="one" element={<div>첫 주문시 양배추즙 서비스</div>} />
           <Route path="two" element={<div>생일기념 쿠폰 받기</div>} />
