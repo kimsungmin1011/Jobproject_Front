@@ -124,7 +124,7 @@ function App() {
       <Navbar bg="light" expand="lg">
         <Container>
           <Navbar.Brand onClick={() => { navigate('/') }}><div class="txt">
-            <img src={dankook} width="30px" height="30px" />
+            <img src={dankook} width="37.5px" height="37.5px" />
             <span>J</span>
             <span>O</span>
             <span>B</span>
