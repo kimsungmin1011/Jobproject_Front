@@ -40,7 +40,7 @@ function App() {
   let { id } = parseInt(useParams());
   const postApply = () => {
     axios.post('https://port-0-employmentservice-likelion-20zynm2mljud9i6q.sel4.cloudtype.app/api/apply', {
-      "employId": id,
+      "employId": 8,
       "name": name,
       "gender": gender,
       "birth": birth,
@@ -135,7 +135,7 @@ function App() {
           </div></Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link onClick={() => { navigate('/') }}>🏠홈</Nav.Link>
-            <Nav.Link onClick={() => { navigate('/event') }}>📑이력서 관리</Nav.Link>
+            <Nav.Link onClick={() => { navigate('/event') }}>📑내 자소서 관리</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

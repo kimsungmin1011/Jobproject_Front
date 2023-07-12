@@ -2,12 +2,9 @@ import { Routes, Route, Link, useNavigate, Outlet, useParams } from 'react-route
 import axios from 'axios'
 import { createContext, useState, useEffect } from 'react';
 import { Table } from 'react-bootstrap'
-import { useSelector } from "react-redux"
-
 
 function Event() {
-    const [data, setData] = useState({});
-    let state = useSelector((state) => { return state })
+    const [data, setData] = useState([]);
 
     const employIdToCompanyName = {
         1: "현대자동차(주)",
@@ -20,7 +17,6 @@ function Event() {
         8: "(주)넥슨",
         9: "(주)원풍",
     };
-
 
     useEffect(() => {
         axios.get('https://port-0-employmentservice-likelion-20zynm2mljud9i6q.sel4.cloudtype.app/api/apply')
@@ -46,13 +42,11 @@ function Event() {
                 </thead>
                 <tbody>
                     {
-                        state.cart.map((a, i) =>
+                        data.map((item, i) =>
                             <tr key={i}>
                                 <td>{i}</td>
-                                {/* <td>{data[i].name}</td>
-                                <td>{data[i].employId}</td> */}
-                                <td>{data[i]?.name}</td>
-                                <td>{employIdToCompanyName[data[i]?.employId]}</td>
+                                <td>{item.name}</td>
+                                <td>{employIdToCompanyName[item.employId]}</td>
                                 <td>📝</td>
                             </tr>
                         )
