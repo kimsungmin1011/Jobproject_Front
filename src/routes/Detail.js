@@ -103,6 +103,7 @@ function TabContent(props) {
     return (
         <div className={`start ${fade}`}>
             {[<div>
+                {/* <img src={require(`./../img/${props.shoes.content}.png`)} /> */}
                 <table className="job-table">
             <thead>
                 <tr>
@@ -123,6 +124,8 @@ function TabContent(props) {
                 </tr>
             </tbody>
         </table>
+        <img src={require(`./../img/${props.찾은회사.content}detail.png`)} alt="Shoes Image" style={{width: '50%', height: 'auto'}}/>
+
             </div>, <div><table className="job-table">
             <thead>
                 <tr>
