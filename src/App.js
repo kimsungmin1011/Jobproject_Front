@@ -13,6 +13,7 @@ import mainVideo from './mainvideo.mp4';
 import netWork from './Network.mp4';
 import dankook from './img/dankook.png';
 import { useSelector } from 'react-redux';
+import ApplicationDetail from './routes/ApplicationDetail';
 
 
 function App() {
@@ -199,7 +200,7 @@ function App() {
               <br /><br /><p className='ply'>주소</p>
               <input
                 type="text"
-                value={residence}
+                defaultValue={residence}
                 onChange={handleAddressChange}
                 placeholder="주소를 입력하세요"
               />
@@ -207,7 +208,7 @@ function App() {
               <br /><br /><p className='ply'>생년월일</p>
               <input
                 type="text"
-                value={birth}
+                defaultValue={birth}
                 onChange={handleBirthdateChange}
                 placeholder="YYYY-MM-DD"
               />
@@ -263,6 +264,7 @@ function App() {
         </Route>
 
         <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/event/:applyId" element={<ApplicationDetail />} />
 
         <Route path="/event" element={<Event />}>
           <Route path="one" element={<div>첫 주문시 양배추즙 서비스</div>} />

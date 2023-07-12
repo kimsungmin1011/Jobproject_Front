@@ -4,6 +4,7 @@ import { createContext, useState, useEffect } from 'react';
 import { Table } from 'react-bootstrap'
 
 function Event() {
+    const navigate = useNavigate();
     const [data, setData] = useState([]);
 
     const employIdToCompanyName = {
@@ -48,7 +49,7 @@ function Event() {
                                 <td>{i+1}</td>
                                 <td>{item.name}</td>
                                 <td>{employIdToCompanyName[item.employId+1]}</td>
-                                <td>📝</td>
+                                <td onClick={() => navigate(`${item.applyId}`)}>📝</td>
                             </tr>
                         )
                     }
