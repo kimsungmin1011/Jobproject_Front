@@ -18,10 +18,11 @@ function Event() {
         9: "(주)원풍",
     };
 
+    console.log(employIdToCompanyName[5])
     useEffect(() => {
         axios.get('https://port-0-employmentservice-likelion-20zynm2mljud9i6q.sel4.cloudtype.app/api/apply')
             .then((결과) => {
-                console.log(결과.data.result);
+                // console.log(결과.data.result);
                 setData(결과.data.result);
             })
             .catch(() => {
@@ -44,9 +45,9 @@ function Event() {
                     {
                         data.map((item, i) =>
                             <tr key={i}>
-                                <td>{i}</td>
+                                <td>{i+1}</td>
                                 <td>{item.name}</td>
-                                <td>{employIdToCompanyName[item.employId]}</td>
+                                <td>{employIdToCompanyName[item.employId+1]}</td>
                                 <td>📝</td>
                             </tr>
                         )
